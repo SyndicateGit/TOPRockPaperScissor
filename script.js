@@ -1,86 +1,89 @@
-
-function getComputerChoice(){ // Randomly returns Rock, Paper, or Scissor.
+function getComputerChoice(){ // Random Computer Choice
   let choice = Math.floor(Math.random()*3 + 1);
 
   if (choice == 1){
-    return "rock";
+    return "ROCK";
   }
   else if (choice ==2){
-    return "paper";
+    return "PAPER";
   }
   else {
-    return "scissor";
+    return "SCISSOR";
   }
 }
 
-function getPlayerChoice(){
-  let playerChoice = prompt("Please choose rock, paper, or scissor: ");
-
-  playerChoice = playerChoice.toLowerCase(); // case insensitive input
-
-  while (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissor" && playerChoice!= null){ //Ensures valid choice
-    alert("Invalid Choice!\n");
-    playerChoice = prompt("Please choose rock, paper, or scissor: ");
-    playerChoice = playerChoice.toLowerCase(); // case insensitive input
+function displayComputerChoice(choice){
+   computerChoice= document.querySelector("#computerChoice");
+  if (choice == "ROCK"){
+    computerChoice.src = "images/rock.jpg"
+  } 
+  else if (choice == "PAPER"){
+    computerChoice.src = "images/paper.jpg"
   }
-
-  return playerChoice;
+  else{
+    computerChoice.src = "images/scissors.jpg"
+  }
 }
 
-var score = 0; // Score tally out of 5 games.
-var tie = 0; // Tie tally out of 5 games.
-var lost = 0;
+function playGame(playerChoice){
+  var computerChoice = getComputerChoice();
+  displayComputerChoice(computerChoice);
 
-function game(times){
-  for (let i=0; i<= times; i++){
-    let playerChoice = getPlayerChoice();
-    let computerChoice = getComputerChoice();
-  
-    console.log(computerChoice);
-  
-    if (playerChoice == 'rock'){
-      if (computerChoice == 'scissor') {
-        alert("You chose rock. Computer chose scissor. \nYou win! :)");
-        score += 1;
+  if (playerChoice == computerChoice){
+    console.log("Tie.");
+    return;
+  }
+  else{
+  switch(playerChoice){
+    case "ROCK":
+      if(computerChoice == "SCISSORS"){
+        console.log("You Win!");
       }
-      else if (computerChoice == 'paper'){
-        alert("You chose rock. Computer chose paper. \nYou lose :( ")
+      else if(computerChoice == "PAPER"){
+        console.log("You Lose!");
       }
-      else {
-        alert("You chose rock. Computer chose rock. \n It's a tie. :| ")
-        tie += 1;
+      break;
+    case "PAPER":
+      if(computerChoice == "SCISSORS"){
+        console.log("You Lose.");
       }
-    }
-    else if (playerChoice == 'paper'){
-      if (computerChoice == 'scissor') {
-        alert("You chose paper. Computer chose scissor. \nYou lose! :(");
+      else if(computerChoice == "ROCK"){
+        console.log("You Win!");
       }
-      else if (computerChoice == 'paper'){
-        alert("You chose paper. Computer chose paper. \n It's a tie :| ")
-        tie += 1;
+      break;
+    case "SCISSORS":
+      if(computerChoice == "ROCK"){
+        console.log("You Lose.");
       }
-      else {
-        alert("You chose paper. Computer chose rock. \n You win!. :) ")
-        score += 1;
+      else if(computerChoice == "PAPER"){
+        console.log("You Win!");
       }
-    }
-    else if (playerChoice == 'scissor'){
-      if (computerChoice == 'scissor') {
-        alert("You chose scissor. Computer chose scissor. \n It's a tie. :|");
-        tie += 1;
-      }
-      else if (computerChoice == 'paper'){
-        alert("You chose scissor. Computer chose paper. \nYou win! :) ")
-        score += 1;
-      }
-      else {
-        alert("You chose scissor. Computer chose rock. \n You lost :(")
-      }
+      break;
     }
   }
 
-  alert("\nYou have won: " + score +" times.\n Tied: " + tie + " times.\n" + "Lost: " + lost +" times.")
+
 }
+
+// Player Selection Event Listeners
+const rockBtn = document.querySelector("#ROCK");
+const paperBtn = document.querySelector("#PAPER");
+const scissorsBtn = document.querySelector("#SCISSORS");
+
+rockBtn.addEventListener("click", function(){
+  playGame("ROCK");
+});
+paperBtn.addEventListener("click", function(){
+  playGame("PAPER");
+})
+scissorsBtn.addEventListener("click", function(){
+  playGame("SCISSORS")
+});
+
+// Result Elements
+var playerChoice = document.querySelector("#playerChoice");
+var computerChoice = document.querySelector("#computerChoice");
+var result = document.querySelector("#result");
 
 
 

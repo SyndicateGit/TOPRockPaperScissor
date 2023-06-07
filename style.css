@@ -1,6 +1,9 @@
 body{
   font-family: cursive;
   background-color: blanchedalmond;
+  gap: 3em;
+  margin: 1em;
+  padding: 1em;
 }
 
 .Selection{
