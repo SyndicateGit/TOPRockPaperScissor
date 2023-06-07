@@ -82,7 +82,7 @@ function game(times){
   alert("\nYou have won: " + score +" times.\n Tied: " + tie + " times.\n" + "Lost: " + lost +" times.")
 }
 
-game(5); // Play game 5 times
+
 
 
 
