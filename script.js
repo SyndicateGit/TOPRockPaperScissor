@@ -25,7 +25,22 @@ function displayComputerChoice(choice){
   }
 }
 
+function displayPlayerChoice(choice){
+  playerChoice= document.querySelector("#playerChoice");
+ if (choice == "ROCK"){
+   playerChoice.src = "images/rock.jpg"
+ } 
+ else if (choice == "PAPER"){
+  playerChoice.src = "images/paper.jpg"
+ }
+ else{
+  playerChoice.src = "images/scissors.jpg"
+ }
+}
+
 function playGame(playerChoice){
+  displayPlayerChoice(playerChoice);
+  
   var computerChoice = getComputerChoice();
   displayComputerChoice(computerChoice);
 
