@@ -40,40 +40,56 @@ function displayPlayerChoice(choice){
 
 function playGame(playerChoice){
   displayPlayerChoice(playerChoice);
-  
+
   var computerChoice = getComputerChoice();
   displayComputerChoice(computerChoice);
 
   if (playerChoice == computerChoice){
+    var result = document.querySelector("#result");
+        result.src="images/tie.png"
     console.log("Tie.");
     return;
   }
   else{
   switch(playerChoice){
     case "ROCK":
-      if(computerChoice == "SCISSORS"){
-        console.log("You Win!");
+      if(computerChoice == "SCISSOR"){
+        var result = document.querySelector("#result");
+        result.src="images/win.png"
+        console.log("You Win!")
       }
       else if(computerChoice == "PAPER"){
-        console.log("You Lose!");
+        var result = document.querySelector("#result");
+        result.src="images/lose.webp"
+        console.log("You Lose.");
       }
       break;
     case "PAPER":
-      if(computerChoice == "SCISSORS"){
+      if(computerChoice == "SCISSOR"){
+        var result = document.querySelector("#result");
+        result.src="images/lose.webp"
         console.log("You Lose.");
       }
       else if(computerChoice == "ROCK"){
+        var result = document.querySelector("#result");
+        result.src="images/win.png"
         console.log("You Win!");
       }
       break;
     case "SCISSORS":
       if(computerChoice == "ROCK"){
+        var result = document.querySelector("#result");
+        result.src="images/lose.webp"
         console.log("You Lose.");
       }
       else if(computerChoice == "PAPER"){
+        var result = document.querySelector("#result");
+        result.src="images/win.png"
         console.log("You Win!");
       }
       break;
+    default:
+      console.log("Something went wrong!")
     }
   }
 
@@ -96,9 +112,8 @@ scissorsBtn.addEventListener("click", function(){
 });
 
 // Result Elements
-var playerChoice = document.querySelector("#playerChoice");
-var computerChoice = document.querySelector("#computerChoice");
-var result = document.querySelector("#result");
+
+
 
 
 
