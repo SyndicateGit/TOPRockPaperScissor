@@ -13,3 +13,7 @@ body{
   padding: 1em;
 }
 
+.game{
+  display: flex;
+  gap: 7vw;
+}
