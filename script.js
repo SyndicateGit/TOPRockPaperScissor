@@ -8,7 +8,7 @@ function getComputerChoice(){ // Random Computer Choice
     return "PAPER";
   }
   else {
-    return "SCISSOR";
+    return "SCISSORS";
   }
 }
 
@@ -53,7 +53,7 @@ function playGame(playerChoice){
   else{
   switch(playerChoice){
     case "ROCK":
-      if(computerChoice == "SCISSOR"){
+      if(computerChoice == "SCISSORS"){
         var result = document.querySelector("#result");
         result.src="images/win.png"
         console.log("You Win!")
@@ -65,7 +65,7 @@ function playGame(playerChoice){
       }
       break;
     case "PAPER":
-      if(computerChoice == "SCISSOR"){
+      if(computerChoice == "SCISSORS"){
         var result = document.querySelector("#result");
         result.src="images/lose.webp"
         console.log("You Lose.");
